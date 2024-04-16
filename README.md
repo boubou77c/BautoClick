@@ -1,0 +1,2 @@
+# BautoClick
+A basic AutoClick

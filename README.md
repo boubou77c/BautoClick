@@ -24,11 +24,11 @@ You can do several things such as :
 ## 📷Screenshots📷
 Main :
 
-![App Screenshot]
+![App Screenshot](main.png)
 
 Setting :
 
-![App Screenshot]
+![App Screenshot](setting.png)
 
 
 ## 🚀 About Me

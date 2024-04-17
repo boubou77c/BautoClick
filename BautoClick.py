@@ -19,7 +19,7 @@ class Window(QWidget):
     def initUi(self):
         #Default setting window
         ui = uic.loadUi("bautoclick.ui",self)
-        ui.setFixedSize(683,525)
+        ui.setFixedSize(421,521)
         ui.setWindowTitle("BautoClick")
 
 
@@ -50,18 +50,23 @@ class Window(QWidget):
         self.shortcut = ui.findChild(QKeySequenceEdit,"key_seq")
         self.save_ct = ui.findChild(QPushButton,"save_sc")
 
+        #Save the ShortCut
         self.save_ct.clicked.connect(self.edit_shortcut)
 
-        #initial shortcut
-        self.hot_key = "M"
-        self.shortcut.setKeySequence(QKeySequence("M"))
+        #Set the inital shortcut -> M
+        self.initial_shortcut()
 
+
+    def initial_shortcut(self):
+        # initial shortcut
+        self.hot_key:str = "M"
+        self.shortcut.setKeySequence(QKeySequence("M"))
         keyboard.add_hotkey(self.hot_key, lambda: self.start(self.get_time, self.get_freq))
 
-    def edit_shortcut(self):
+    def edit_shortcut(self) -> bool:
         try:
             # Set the new shortcut
-            new_shortcut = self.shortcut.keySequence().toString()
+            new_shortcut:str = self.shortcut.keySequence().toString()
             # If the keySequence has more than 1 shortcut -> delete
             if len(new_shortcut) > 1:
                 self.shortcut.clear()
@@ -70,8 +75,11 @@ class Window(QWidget):
             self.hot_key = new_shortcut
             # Add the new shortcut
             keyboard.add_hotkey(self.hot_key, lambda: self.start(self.get_time, self.get_freq))
+            return True
         except Exception:
-            print("No ShortCut")
+            self.initial_shortcut()
+            print("Shortcut reset 'M' : No shortcut entered.")
+            return False
 
 
     def start(self,tm,frq):
@@ -117,12 +125,12 @@ class Window(QWidget):
         #Text status force update
         QApplication.processEvents()
 
-
         #Loop to do the auto click
         while time.time() < end_time :
             #If it is True -> Click / Else -> Stop
             if (self.state):
-                pyautogui.click()
+                #pyautogui.click()
+                print("click")
                 time.sleep(freq)
             else:
                 break

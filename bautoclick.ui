@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>683</width>
-    <height>525</height>
+    <width>421</width>
+    <height>521</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,8 +21,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>721</width>
-     <height>531</height>
+     <width>421</width>
+     <height>521</height>
     </rect>
    </property>
    <property name="tabPosition">
@@ -42,8 +42,8 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>0</y>
-       <width>681</width>
+       <y>20</y>
+       <width>431</width>
        <height>92</height>
       </rect>
      </property>
@@ -98,9 +98,9 @@
     <widget class="QLabel" name="status">
      <property name="geometry">
       <rect>
-       <x>380</x>
+       <x>230</x>
        <y>450</y>
-       <width>291</width>
+       <width>151</width>
        <height>21</height>
       </rect>
      </property>
@@ -117,9 +117,9 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>90</y>
-       <width>681</width>
-       <height>361</height>
+       <y>110</y>
+       <width>421</width>
+       <height>341</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
@@ -128,6 +128,8 @@
         <property name="font">
          <font>
           <pointsize>16</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
          </font>
         </property>
         <property name="styleSheet">
@@ -170,13 +172,16 @@
         <property name="font">
          <font>
           <pointsize>16</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+          <underline>true</underline>
          </font>
         </property>
         <property name="styleSheet">
          <string notr="true">color: #0047AB;margin-left:30</string>
         </property>
         <property name="text">
-         <string>Time :</string>
+         <string>Time (sec) :</string>
         </property>
        </widget>
       </item>
@@ -185,6 +190,9 @@
         <property name="font">
          <font>
           <pointsize>16</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+          <underline>true</underline>
          </font>
         </property>
         <property name="styleSheet">
@@ -208,7 +216,7 @@
       <rect>
        <x>0</x>
        <y>450</y>
-       <width>361</width>
+       <width>161</width>
        <height>24</height>
       </rect>
      </property>
@@ -234,7 +242,7 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>681</width>
+       <width>421</width>
        <height>83</height>
       </rect>
      </property>
@@ -268,7 +276,7 @@
       <rect>
        <x>0</x>
        <y>80</y>
-       <width>681</width>
+       <width>421</width>
        <height>16</height>
       </rect>
      </property>
@@ -282,10 +290,10 @@
     <widget class="QWidget" name="gridLayoutWidget_2">
      <property name="geometry">
       <rect>
-       <x>130</x>
+       <x>0</x>
        <y>90</y>
        <width>371</width>
-       <height>381</height>
+       <height>391</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
@@ -328,6 +336,19 @@
        </widget>
       </item>
      </layout>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>480</y>
+       <width>47</width>
+       <height>13</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>@Boubou</string>
+     </property>
     </widget>
    </widget>
   </widget>

@@ -129,7 +129,7 @@ class Window(QWidget):
         while time.time() < end_time :
             #If it is True -> Click / Else -> Stop
             if (self.state):
-                #pyautogui.click()
+                pyautogui.click()
                 print("click")
                 time.sleep(freq)
             else:

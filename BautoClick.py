@@ -3,6 +3,7 @@ import threading
 import keyboard
 import pyautogui
 import time
+import json
 
 from PyQt5.QtWidgets import QKeySequenceEdit, QDoubleSpinBox,QCheckBox,QSpinBox,QWidget,QApplication,QLabel,QPushButton
 from PyQt5 import uic
@@ -56,6 +57,8 @@ class Window(QWidget):
         #Set the inital shortcut -> M
         self.initial_shortcut()
 
+        self.load_data()
+        print(self.hot_key)
 
     def initial_shortcut(self):
         # initial shortcut
@@ -75,6 +78,7 @@ class Window(QWidget):
             self.hot_key = new_shortcut
             # Add the new shortcut
             keyboard.add_hotkey(self.hot_key, lambda: self.start(self.get_time, self.get_freq))
+            self.get_data()
             return True
         except Exception:
             self.initial_shortcut()
@@ -130,6 +134,7 @@ class Window(QWidget):
             #If it is True -> Click / Else -> Stop
             if (self.state):
                 pyautogui.click()
+                print("click")
                 time.sleep(freq)
             else:
                 break
@@ -139,6 +144,31 @@ class Window(QWidget):
         self.status.setText("Status : Disabled")
 
 
+    #Save the shortcut in the data.json
+    def get_data(self):
+        try:
+            with open("data.json","r") as file:
+                actual_data = json.load(file)
+        except FileNotFoundError:
+            actual_data = {}
+
+        actual_data["shortcut"] = self.hot_key
+
+        with open("data.json","w") as file:
+            json.dump(actual_data,file)
+
+    #Load the last shortcut
+    def load_data(self):
+        try:
+            with open("data.json","r")as file:
+                actual_data = json.load(file)
+                print(self.hot_key)
+                keyboard.remove_hotkey(self.hot_key)
+                self.shortcut.setKeySequence(QKeySequence(actual_data.get("shortcut","")))
+                self.hot_key = actual_data.get("shortcut", "")
+                keyboard.add_hotkey(self.hot_key, lambda: self.start(self.get_time, self.get_freq))
+        except OSError:
+            actual_data = {}
 
 
 app = QApplication(sys.argv)

@@ -130,7 +130,6 @@ class Window(QWidget):
             #If it is True -> Click / Else -> Stop
             if (self.state):
                 pyautogui.click()
-                print("click")
                 time.sleep(freq)
             else:
                 break
